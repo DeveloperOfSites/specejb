@@ -14,17 +14,17 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Hello Custome 1</h1>
             <%
                 java.util.List cc = (java.util.List)request.getAttribute("cust");
                 int k = cc.size();
                 for(int i=0 ; i<k; i++) {
             %>
-            <p><%=((Customer)cc.get(i)).getLastName()%></p>
+            <p><%=((Customer)cc.get(i)).getFirstName()%> - <%=((Customer)cc.get(i)).getLastName()%></p>
             <%        
                 }
             %>
-        <h1>Hello World 2</h1>
+        <h1>Hello Customer 2</h1>
             <%
                 List<Customer> cc1 = (List)request.getAttribute("cust");
                 for(Customer c : cc1) {
