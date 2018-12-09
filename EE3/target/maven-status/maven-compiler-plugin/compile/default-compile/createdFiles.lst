@@ -1,0 +1,7 @@
+com\spec\ProcessorServlet.class
+com\spec\ejb\AppConfBean.class
+com\spec\ejb\CalculatorBean.class
+com\spec\FormServlet.class
+com\spec\ejb\CustomerServiceBean.class
+com\spec\Entity\Customer.class
+com\spec\CustomerServlet.class
