@@ -52,10 +52,11 @@ public class AccountServiceBean {
     }
     
     public void createUserAccount(UserAccount user) {
-        String insertQ = "insert into account (username, \"password\", email, created_on) values(?, ?, ?, current_timestamp) from public.account";
+        String insertQ = "insert into account (username, password, email, created_on) values(?, ?, ?, current_timestamp);";
         try(Connection c = ds.getConnection();PreparedStatement ps = c.prepareStatement(insertQ);) {
             ps.setString(1, user.getUsername());
-            //...//
+            ps.setString(2, user.getPassword());
+            ps.setString(3, user.getEmail());
             ps.executeUpdate();
         }   
         catch(SQLException ex) {

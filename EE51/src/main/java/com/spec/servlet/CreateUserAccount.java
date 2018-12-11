@@ -18,16 +18,15 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Student1
+ * @author UserAdmin
  */
-@WebServlet(name = "AccoutnServlet", urlPatterns = {"/AccoutnServlet"})
-public class AccoutnServlet extends HttpServlet {
+@WebServlet(name = "CreateUserAccount", urlPatterns = {"/CreateUserAccount"})
+public class CreateUserAccount extends HttpServlet {
 
     @Inject
     AccountServiceBean asc;
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      *
      * @param request servlet request
      * @param response servlet response
@@ -36,26 +35,25 @@ public class AccoutnServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         asc.init();
-        for(UserAccount a : asc.getAll()){
-            System.out.println("== "+a);
+        UserAccount user = new UserAccount();
+        user.setUsername("test");
+        user.setPassword("test");
+        user.setEmail("email");
+        asc.createUserAccount(user);
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet CreateUserAccount</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet CreateUserAccount at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
-        request.setAttribute("listUA", asc.getAll());
-        request.setAttribute("mytext", "mytext q2e4e23rwerfw");
-        request.getRequestDispatcher("/getaccount.jsp").forward(request, response);
-//        try (PrintWriter out = response.getWriter()) {
-//            /* TODO output your page here. You may use following sample code. */
-//            out.println("<!DOCTYPE html>");
-//            out.println("<html>");
-//            out.println("<head>");
-//            out.println("<title>Servlet AccoutnServlet</title>");            
-//            out.println("</head>");
-//            out.println("<body>");
-//            out.println("<h1>Servlet AccoutnServlet at " + request.getContextPath() + "</h1>");
-//            out.println("</body>");
-//            out.println("</html>");
-//        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
